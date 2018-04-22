@@ -1,7 +1,7 @@
 import throttle from "lodash.throttle"
 import ResizeObserver from "resize-observer-polyfill"
 
-export const ResizeableMixin = {
+export const ResponsiveMixin = {
   data() {
     return {
       el: {
@@ -39,7 +39,7 @@ export const ResizeableMixin = {
   }
 }
 
-export const Resizeable = {
+export const Responsive = {
   data() {
     return { init: false }
   },
@@ -47,7 +47,7 @@ export const Resizeable = {
     noHide: { type: Boolean, default: false },
     breakpoints: { type: Object, default: undefined }
   },
-  mixins: [ResizeableMixin],
+  mixins: [ResponsiveMixin],
   render(h) {
     const slot =
       (this.$scopedSlots.default && this.$scopedSlots.default(this.el)) ||
