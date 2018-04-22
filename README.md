@@ -16,7 +16,7 @@ npm install vue-responsive-components
 <template>
   <div :class="['post__item', { small: el.is.small }]">
     <img class="post__image" :src="post.image" />
-    <div class="post__text">{{post.text}}</div><>
+    <div class="post__text">{{post.text}}</div>
   </div>
 </template>
 
@@ -59,7 +59,7 @@ export default {
 <template>
   <Responsive :breapoints="{
     small: el => el.width <= 500>
-  }>
+  }">
     <div slot-scope="el" :class="['post__item', { small: el.is.small }]">
       <img class="post__image" :src="post.image" />
       <div class="post__text">{{post.text}}</div><>
@@ -68,14 +68,12 @@ export default {
 </template>
 
 <script>
-
-
-
-import { Responsive } from 'vue-responsive-components'
+import { Responsive } from "vue-responsive-components"
 
 export default {
   components: { Responsive }
 }
+</script>
 ```
 
 ## License
