@@ -62,7 +62,7 @@ export default {
   }">
     <div slot-scope="el" :class="['post__item', { small: el.is.small }]">
       <img class="post__image" :src="post.image" />
-      <div class="post__text">{{post.text}}</div><>
+      <div class="post__text">{{post.text}}</div>
     </div>
   </Responsive>
 </template>
