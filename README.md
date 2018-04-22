@@ -57,7 +57,7 @@ export default {
 
 ```vue
 <template>
-  <Responsive :breapoints="{
+  <Responsive :breakpoints="{
     small: el => el.width <= 500>
   }">
     <div slot-scope="el" :class="['post__item', { small: el.is.small }]">
