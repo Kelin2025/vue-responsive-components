@@ -1,6 +1,6 @@
 {
   "name": "vue-responsive-components",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Easily create responsive Vue.js components with ResizeObserver",
   "main": "index.js",
   "module": "index.js",
