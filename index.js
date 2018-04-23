@@ -67,3 +67,28 @@ export const Responsive = {
     this.init = true
   }
 }
+
+export const ResponsiveDirective = {
+  inserted(el, conds) {
+    if (typeof process === "undefined" || !process.server) {
+      const handleResize = throttle(entries => {
+        const cr = entries[0].contentRect
+        for (const breakpoint in conds.value) {
+          if (conds.value[breakpoint](cr)) {
+            el.classList.add(breakpoint)
+          } else {
+            el.classList.remove(breakpoint)
+          }
+        }
+      }, 200)
+
+      const observer = new ResizeObserver(handleResize)
+      observer.observe(el)
+    }
+  }
+}
+
+export const VueResponsiveComponents = Vue => {
+  Vue.component("Responsive", Responsive)
+  Vue.directive("responsive", ResponsiveDirective)
+}
