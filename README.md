@@ -1,6 +1,10 @@
 # vue-responsive-components
 
-Create responsive components with ResizeObserver
+Create responsive components with ResizeObserver.
+
+## Idea
+
+Check out [**my post on ITNEXT**](https://itnext.io/making-adaptive-vue-components-with-resizeobserver-123b5ebb20ae)
 
 ## Installation
 
@@ -8,27 +12,39 @@ Create responsive components with ResizeObserver
 npm install vue-responsive-components
 ```
 
+## (Optional) Add plugin globally
+
+```
+import Vue from 'vue'
+import { VueResponsiveComponents } from 'vue-responsive-components'
+
+
+Vue.use(VueResponsiveComponents)
+```
+
+It will add `Responsive` component and `v-responsive` directive
+
 ## Usage
 
-#### As mixin
+#### `Responsive` component with scoped slot
 
 ```vue
 <template>
-  <div :class="['post__item', { small: el.is.small }]">
-    <img class="post__image" :src="post.image" />
-    <div class="post__text">{{post.text}}</div>
-  </div>
+  <Responsive :breakpoints="{
+    small: el => el.width <= 500>
+  }">
+    <div slot-scope="el" :class="['post__item', { small: el.is.small }]">
+      <img class="post__image" :src="post.image" />
+      <div class="post__text">{{post.text}}</div>
+    </div>
+  </Responsive>
 </template>
 
 <script>
-import { ResponsiveMixin } from "vue-responsive-components"
+import { Responsive } from "vue-responsive-components"
 
 export default {
-  props: ["post"],
-  mixins: [ResponsiveMixin],
-  breakpoints: {
-    small: el => el.width <= 500
-  }
+  components: { Responsive }
 }
 </script>
 
@@ -53,25 +69,48 @@ export default {
 </style>
 ```
 
-#### As component with scoped slot
+#### `v-responsive` directive
+
+> Thanks to [**this guy**](https://www.reddit.com/r/vuejs/comments/8eap88/making_responsive_vue_components_with/dxtx0bu/) for idea
 
 ```vue
 <template>
-  <Responsive :breakpoints="{
-    small: el => el.width <= 500>
-  }">
-    <div slot-scope="el" :class="['post__item', { small: el.is.small }]">
-      <img class="post__image" :src="post.image" />
-      <div class="post__text">{{post.text}}</div>
-    </div>
-  </Responsive>
+  <div class="post__item" v-responsive="{ small => el.width <= 500 }">
+    <img class="post__image" :src="post.image" />
+    <div class="post__text">{{post.text}}</div>
+  </div>
 </template>
 
 <script>
-import { Responsive } from "vue-responsive-components"
+import { ResponsiveDirective } from "vue-responsive-components"
 
 export default {
-  components: { Responsive }
+  directives: {
+    responsive: ResponsiveDirective
+  }
+}
+</script>
+```
+
+#### Mixin
+
+```vue
+<template>
+  <div :class="['post__item', { small: el.is.small }]">
+    <img class="post__image" :src="post.image" />
+    <div class="post__text">{{post.text}}</div>
+  </div>
+</template>
+
+<script>
+import { ResponsiveMixin } from "vue-responsive-components"
+
+export default {
+  props: ["post"],
+  mixins: [ResponsiveMixin],
+  breakpoints: {
+    small: el => el.width <= 500
+  }
 }
 </script>
 ```
