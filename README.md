@@ -30,7 +30,7 @@ It will add `Responsive` component and `v-responsive` directive
 ```vue
 <template>
   <Responsive :breakpoints="{
-    small: el => el.width <= 500>
+    small: el => el.width <= 500
   }">
     <div slot-scope="el" :class="['post__item', { small: el.is.small }]">
       <img class="post__image" :src="post.image" />
