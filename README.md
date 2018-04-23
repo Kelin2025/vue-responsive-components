@@ -14,10 +14,9 @@ npm install vue-responsive-components
 
 ## (Optional) Add plugin globally
 
-```
-import Vue from 'vue'
-import { VueResponsiveComponents } from 'vue-responsive-components'
-
+```javascript
+import Vue from "vue"
+import { VueResponsiveComponents } from "vue-responsive-components"
 
 Vue.use(VueResponsiveComponents)
 ```
@@ -44,6 +43,7 @@ It will add `Responsive` component and `v-responsive` directive
 import { Responsive } from "vue-responsive-components"
 
 export default {
+  props: ["post"],
   components: { Responsive }
 }
 </script>
@@ -75,6 +75,7 @@ export default {
 
 ```vue
 <template>
+  <!-- Will add/remove .small if the width is less / greater -->
   <div class="post__item" v-responsive="{ small => el.width <= 500 }">
     <img class="post__image" :src="post.image" />
     <div class="post__text">{{post.text}}</div>
@@ -85,6 +86,7 @@ export default {
 import { ResponsiveDirective } from "vue-responsive-components"
 
 export default {
+  props: ["post"],
   directives: {
     responsive: ResponsiveDirective
   }
