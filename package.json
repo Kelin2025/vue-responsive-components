@@ -2,45 +2,21 @@
   "name": "vue-responsive-components",
   "version": "0.2.4",
   "description": "Easily create responsive Vue.js components with ResizeObserver",
-  "main": "dist/vue-responsive-components.umd.min.js",
+  "main": "dist/index.js",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name vue-responsive-components src/index.js",
-    "lint": "vue-cli-service lint"
+    "build": "babel src -d dist"
   },
   "module": "index.js",
   "repository": "https://github.com/kelin2025/vue-responsive-components",
   "author": "Anton Kosykh <kelin2025@yandex.ru>",
   "license": "MIT",
   "dependencies": {
-    "core-js": "^2.6.5",
     "lodash.throttle": "^4.1.1",
     "resize-observer-polyfill": "^1.5.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.5.0",
-    "@vue/cli-plugin-eslint": "^3.5.0",
-    "@vue/cli-service": "^3.5.0",
-    "@vue/eslint-config-standard": "^4.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.9.0",
-    "sass-loader": "^7.1.0",
-    "vue-template-compiler": "^2.5.21"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/standard"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
   }
 }
