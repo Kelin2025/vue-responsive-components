@@ -1,8 +1,11 @@
 {
   "name": "vue-responsive-components",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Easily create responsive Vue.js components with ResizeObserver",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel src -d dist"
+  },
   "module": "index.js",
   "repository": "https://github.com/kelin2025/vue-responsive-components",
   "author": "Anton Kosykh <kelin2025@yandex.ru>",
@@ -10,5 +13,10 @@
   "dependencies": {
     "lodash.throttle": "^4.1.1",
     "resize-observer-polyfill": "^1.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
   }
 }
